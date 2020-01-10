@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Task 3</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+tr{
+        border:1px solid #ccc;
+}
+</style>
+
+<body>
+
+        <header>
+
+        </header>
+
+        <div class="container">
+                <div class="col-xs-12 col-md-12">
+                        <form>
+                                <table cellpadding="0" cellspacing="0" class="display">
+                                        <thead style="background-color:#DC5807; color:White; font-weight:bold">
+                                                <tr style="border:solid 1px #000000">
+                                                        <td>UserId</td>
+                                                        <td>Image</td>
+                                                        <td>Repo</td>
+                                                        <td>URL</td>
+                                                </tr>
+                                        </thead>
+                                        <tbody  id="tbDetails"></tbody>
+                                </table>
+                        </form>
+                </div>
+        </div>
+
+        <footer>
+
+        </footer>
+
+
+</body>
+<script>
+        $(document).ready(function () {
+                $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "https://api.github.com/users",
+                        // data: "{}",  
+                        // dataType: "json",  
+                        success: function (data) {
+                                console.log("Data===" + JSON.stringify(data,
+                                        null, 4))
+                                for (var i = 0; i < data.length; i++) {
+                                        $("#tbDetails").append(
+                                                " <tr> <td>" + data[i].id +
+                                                "</td> <td><img src=" +
+                                                data[i].avatar_url +
+                                                "height='100px' width='100px'/>"+"</td> <td><a href=" +
+                                                data[i].repos_url +" target=_blank>"+"Repo URL"+
+                                               
+                                               
+                                                "</a></td><td><a href=" +
+                                                data[i].html_url +" target=_blank>"+"Html URL"+
+                                               
+                                               
+                                                "</a></td> </tr>");
+                                                	
+                                       // alert(JSON.stringify(data));
+                                }
+                        },
+                        error: function (result) {
+                                alert("Error");
+                        }
+                });
+                $("tr:first").css("background-color", "red");
+        });
+</script>
+
+</html>

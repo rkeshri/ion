@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Task 2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+        <header>
+
+        </header>
+
+        <div class="container">
+                <div class="col-xs-12 col-md-12">
+                        <form>
+                                <div class="form-group">
+                                        <label for="email">Email address:</label>
+                                        <input type="email" class="form-control" id="txtEmail">
+                                </div>
+                                <div class="form-group">
+                                        <label for="pwd">Password:</label>
+                                        <input type="password" class="form-control" id="txtPassword">
+                                </div>
+
+                                <button type="button" class="btn btn-default" onclick=formSubmit()>Submit</button>
+                        </form>
+                </div>
+        </div>
+
+        <footer>
+
+        </footer>
+
+
+</body>
+<script>
+        function formSubmit() {
+               
+                var checkValidation = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$";
+                var passwordValue = document.getElementById("txtPassword").value;
+                
+                if (!checkValidation.match(passwordValue)) {
+                        alert(
+                        "Error: Password should have at least 1 uppercase, 1 lowercase, 1 number, 1 special character, minimum of 8 characters, and maximum of 16 characters");
+                } else {
+                        alert("successfully submitted");
+                }
+
+        }
+</script>
+
+</html>
